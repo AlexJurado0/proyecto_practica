@@ -12,13 +12,13 @@
     <form action="../Modelo/modificarDatos.php" method="post" >
 
         <label for="codigo_producto">Codigo Producto</label>
-        <input type="number" name="codigo_producto" id="codigo_producto" value="codigo_producto">
+        <input type="number" name="codigo_producto" id="codigo_producto" value="codigo_producto" required>
 
         <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre">
+        <input type="text" name="nombre" id="nombre" required>
 
         <label for="precio_lista">precio_lista</label>
-        <input type="text" name="precio_lista" id="precio_lista">
+        <input type="text" name="precio_lista" id="precio_lista" required>
 
         <button type="submit" class="btn btn-warning">Modificar Datos</button>
     </form>

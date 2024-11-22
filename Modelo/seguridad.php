@@ -1,4 +1,4 @@
-<?php
+<?php 
 //inicio la sesión 
 session_start();
 //comprueba que el usuario esta autentificado 

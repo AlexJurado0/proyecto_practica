@@ -10,7 +10,7 @@
     <title>Inventario</title>
 </head>
 <body>
-
+    
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="paginaPrincipal.php">Inicio</a>
@@ -33,6 +33,6 @@
     </div>
   </div>
 </nav>
-
+    <h1 class="text-center mt-4">Ventas</h1>
 </body>
 </html>
