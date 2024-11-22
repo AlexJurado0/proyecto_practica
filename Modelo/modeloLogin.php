@@ -13,7 +13,7 @@ $result = mysqli_query($conexion, $query);
 // Verifica si las credenciales son válidas
 if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
-    $_SESSION["autentificado"] = "1"; // Marca al usuario como autenticado
+    $_SESSION["autentificado"] = "1";
     $_SESSION["id_usuario"] = $row["id_usuario"]; // Guarda el id_usuario en la sesión
     header("Location: ../Vista/paginaPrincipal.php");
     exit();

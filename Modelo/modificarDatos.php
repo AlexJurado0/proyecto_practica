@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
     include 'conexion.php';
 
@@ -10,6 +10,6 @@
 
     mysqli_query($conexion,$query);
 
-    header("Location: ../Vista/paginaPrincipal.php");
+    header("Location: ../Vista/productos.php");
 
 ?>

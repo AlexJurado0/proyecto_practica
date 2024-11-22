@@ -15,7 +15,7 @@ $query = "insert into productos (codigo_producto, id_usuario, nombre, precio_lis
 $result = mysqli_query($conexion, $query);
 
 if ($result) {
-    header("Location: ../Vista/paginaPrincipal.php");
+    header("Location: ../Vista/productos.php");
     exit();
 }
 ?>

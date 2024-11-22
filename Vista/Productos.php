@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <title>Inventario</title>
+    <title>Productos</title>
 </head>
 <body>
     
@@ -20,10 +20,10 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="Productos.php">Productos</a>
+          <a class="nav-link active" aria-current="page" href="productos.php">Productos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Proveedores</a>
+          <a class="nav-link" href="proveedores.php">Proveedores</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ventas.php">Ventas</a>
@@ -50,14 +50,14 @@ echo '<thead class="thead-dark">
             <th scope="col">Acciones</th> <!-- Nueva columna para los botones -->
         </tr>
       </thead>';
-echo '<tbody>';
+
 
 // Itera sobre los datos y genera las filas de la tabla
 while ($row = mysqli_fetch_assoc($resultado)) {
     echo '<tr>';
-    echo '<td>' . htmlspecialchars($row["codigo_producto"]) . '</td>';
-    echo '<td>' . htmlspecialchars($row["nombre"]) . '</td>';
-    echo '<td>' . htmlspecialchars($row["precio_lista"]) . ' $</td>';
+    echo '<td>' . ($row["codigo_producto"]) . '</td>';
+    echo '<td>' . ($row["nombre"]) . '</td>';
+    echo '<td>' . ($row["precio_lista"]) . ' $</td>';
     
     // botones dentro de cada fila
     echo '<td>
@@ -73,7 +73,7 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 mysqli_free_result($resultado);
 mysqli_close($conexion);
 
-echo '</tbody>';
+
 echo '</table>';
 echo '</div>';
 ?>

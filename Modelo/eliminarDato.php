@@ -9,5 +9,5 @@ $query = "delete from productos where codigo_producto = $codigo ";
 
 mysqli_query($conexion, $query);
 
-header("Location: ../Vista/paginaPrincipal.php");
+header("Location: ../Vista/productos.php");
 ?>
