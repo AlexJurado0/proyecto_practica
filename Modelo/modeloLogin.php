@@ -10,6 +10,7 @@ $pass = $_POST["contraseña"];
 $query = "SELECT id_usuario FROM login WHERE usuario = '$user' AND contraseña = '$pass'";
 $result = mysqli_query($conexion, $query);
 
+
 // Verifica si las credenciales son válidas
 if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
@@ -18,6 +19,6 @@ if (mysqli_num_rows($result) == 1) {
     header("Location: ../Vista/paginaPrincipal.php");
     exit();
 } else {
-    header("Location: ../Vista/index.html?error=1");
+    header("Location: ../Vista/index.php");
     exit();
 }
