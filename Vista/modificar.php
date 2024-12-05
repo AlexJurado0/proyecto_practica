@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center " style="min-height: 100px;">
-    <form action="../Modelo/crud.php" method="post" >
+    <form action="../Controlador/controladorCrud.php" method="post" >
 
         <label for="codigo_producto">Codigo Producto</label>
         <input type="number" name="codigo_producto" id="codigo_producto" value="codigo_producto" required>

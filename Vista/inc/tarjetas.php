@@ -1,6 +1,5 @@
-
 <?php 
-$resultado = mostrarDatos($conexion);
+$resultado = mostrarDatos($conexion,$id_usuario);
 ?>
 <br>
 <div class="container py-3">
@@ -11,7 +10,7 @@ $resultado = mostrarDatos($conexion);
                         <div class="card-body">
                             <h5 class="card-title container d-flex justify-content-center" ><?php echo ($producto['nombre']) ?></h5>
                             <p class="card-text container d-flex justify-content-center ">Precio: $<?php echo ($producto['precio_lista']) ?></p>
-                            <form action="../Modelo/crud.php" method="post">
+                            <form action="../Controlador/controladorCrud.php" method="post">
                               
                             
                             <input type="hidden" name="codigo_producto" value="<?php echo $producto['codigo_producto']; ?>">

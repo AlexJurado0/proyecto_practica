@@ -7,7 +7,7 @@
 
 <?php 
   
-  $resultadoVentas = ventas($conexion);
+  $resultadoVentas = mostrarVentas($conexion, $id_usuario);
   while ($row = mysqli_fetch_assoc($resultadoVentas)) {
     echo '<tr>';
     echo '<td>' . ($row["codigo_producto"]) . '</td>';

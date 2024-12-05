@@ -1,5 +1,5 @@
 <?php
-include '../Modelo/crud.php';
+include '../Controlador/controladorCrud.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

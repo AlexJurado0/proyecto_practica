@@ -1,24 +1,11 @@
 <?php
-session_start(); // Inicia la sesión
-
-include '../Modelo/conexion.php';
-
-$user = $_POST["nombre"];
-$pass = $_POST["contraseña"];
-
-// Consulta para verificar las credenciales
-$query = "SELECT id_usuario FROM login WHERE usuario = '$user' AND contraseña = '$pass'";
-$result = mysqli_query($conexion, $query);
+session_start(); 
+include 'conexion.php';
 
 
-// Verifica si las credenciales son válidas
-if (mysqli_num_rows($result) == 1) {
-    $row = mysqli_fetch_assoc($result);
-    $_SESSION["autentificado"] = "1";
-    $_SESSION["id_usuario"] = $row["id_usuario"]; // Guarda el id_usuario en la sesión
-    header("Location: ../Vista/paginaPrincipal.php");
-    exit();
-} else {
-    header("Location: ../Vista/index.php");
-    exit();
+function verificarLogin($conexion, $usuario, $contraseña) {
+    $query = "SELECT id_usuario FROM login WHERE usuario = '$usuario' AND contraseña = '$contraseña'";
+    $resultado = mysqli_query($conexion, $query);
+    return $resultado;
 }
+?>

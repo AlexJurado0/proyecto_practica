@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
     
 
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh;">
-        <form action="../Modelo/crud.php" method="post" align="center" class="w-50">
+        <form action="../Controlador/controladorCrud.php" method="post" align="center" class="w-50">
             <!-- Código Producto -->
             <div class="mb-3">
                 <label for="codigo_producto" class="form-label">Código Producto</label>

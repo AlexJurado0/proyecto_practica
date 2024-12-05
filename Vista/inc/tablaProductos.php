@@ -1,6 +1,6 @@
 <?php
 
-$resultado = mostrarDatos($conexion);
+$resultado = mostrarDatos($conexion,$id_usuario);
 
 
 
@@ -27,7 +27,7 @@ while ($row = mysqli_fetch_assoc($resultado)) {
     // botones dentro de cada fila
     echo '<td>
             <a href="modificar.php?=codigo_producto' . $row["codigo_producto"] . '" class="btn btn-warning btn-sm"><i class="bi bi-pen"></i> Modificar</a>
-            <a href="../Modelo/crud.php?codigo_producto=' . $row["codigo_producto"] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'¿Estás seguro de que quieres eliminar este producto?\')"><i class="bi bi-trash3-fill"></i> Eliminar</a>
+            <a href="../Controlador/controladorCrud.php?codigo_producto=' . $row["codigo_producto"] . '" class="btn btn-danger btn-sm" onclick="return confirm(\'¿Estás seguro de que quieres eliminar este producto?\')"><i class="bi bi-trash3-fill"></i> Eliminar</a>
             
             </td>';
     

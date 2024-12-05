@@ -1,4 +1,4 @@
-<?php include '../Modelo/crud.php';?>
+<?php include '../Controlador/controladorCrud.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

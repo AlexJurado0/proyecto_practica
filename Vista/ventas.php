@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-include '../Modelo/crud.php';
+include '../Controlador/controladorCrud.php';
 ?>
 <html lang="en">
 <head>

@@ -7,12 +7,12 @@
 <body>
 
     <div class="container d-flex justify-content-center align-items-center " style="min-height: 600px;">
-        <form method="post" action="../Modelo/ModeloLogin.php" style="width: 100%; max-width: 400px;">
+        <form method="post" action="../Controlador/controladorLogin.php" style="width: 100%; max-width: 400px;">
             <div class="mb-3 row">
                 
-                <label for="staticEmail" class="col-sm-4 col-form-label" >  <i class="bi bi-person-circle"></i> Usuario</label>
+                <label for="nombre" class="col-sm-4 col-form-label" >  <i class="bi bi-person-circle"></i> Usuario</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="staticEmail" name="nombre" placeholder="Ingresa tu nombre">
+                    <input type="text" class="form-control" name="nombre" placeholder="Ingresa tu nombre">
                 </div>
             </div>
             <div class="mb-3 row">
