@@ -2,23 +2,21 @@
 
 $resultadoVentas = mostrarVentas($conexion, $id_usuario);  ?>
 
-<div class="container mt-5">
-    <table class="table table-striped table-bordered table-hover">
+<div class="container mt-5 ">
+    <table class="table  table-bordered table-hover">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Numero de venta</th>
-                <th scope="col">Código</th>
-                <th scope="col">Producto</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Precio Lista</th> 
-                <th scope="col">total</th> 
-                <th scope="col">Acciones</th>
+                <th class="col-1">Código</th>
+                <th class="col-3">Producto</th>
+                <th class="col-2">Cantidad vendida</th>
+                <th class="col-1">Precio Lista</th> 
+                <th class="col-1">total</th> 
+                <th class="col-2">Acciones</th>
             </tr>
         </thead>
         <tbody>
             <?php while ($row = mysqli_fetch_assoc($resultadoVentas)) { ?>
                 <tr>
-                    <td><?php echo $row["id_ventas"]; ?></td>
                     <td><?php echo $row["codigo_producto"]; ?></td>
                     <td><?php echo $row["producto"]; ?></td>
                     <td><?php echo $row["cantidad"]; ?></td>
@@ -27,9 +25,9 @@ $resultadoVentas = mostrarVentas($conexion, $id_usuario);  ?>
                     <td>
                         <div class="d-flex justify-content-start align-items-center">
                             
-                            <form method="post" action="../Controlador/controladorCrud.php" class="ms-1">
-                                <input type="hidden" name="id_ventas" value="<?php echo $row['id_ventas']; ?>">
-                                <input type="number" name="cantidad" class="form-control form-control-sm" style="width: 80px;" placeholder="Cantidad" required>
+                            <form method="post" action="../Controlador/controladorCrud.php" class="d-flex justify-content-start align-items-center ms-1">
+                                <input type="hidden" name="codigo_producto" value="<?php echo $row['codigo_producto']; ?>">
+                                <input type="number" name="cantidad" class="form-control form-control-sm me-3" style="width: 90px;" placeholder="Cantidad" required>
                                 <button type="submit" name="eliminar" class="btn btn-danger btn-sm">eliminar  <i class="bi bi-trash3-fill"></i></button>
                             </form>
                         </div>

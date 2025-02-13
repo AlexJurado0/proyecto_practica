@@ -17,11 +17,5 @@ include '../Controlador/controladorCrud.php';
 <!-- tarjetas -->
 <?php include_once './inc/tarjetas.php'; ?>
 
-<!-- Carrito de compras -->
-<?php include_once  './inc/carrito.php'; ?>
-
-
-
-
 </body>
 </html>

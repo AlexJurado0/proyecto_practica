@@ -5,11 +5,11 @@ $resultado = mostrarDatos($conexion,$id_usuario);
 <div class="container py-3">
         <div class="row">
             <?php while ($producto = mysqli_fetch_assoc($resultado)){ ?>
-                <div class="col-md-3">
+                <div class="col-3 md-3">
                     <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title container d-flex justify-content-center" ><?php echo ($producto['nombre']) ?></h5>
-                            <p class="card-text container d-flex justify-content-center ">Precio: $<?php echo ($producto['precio_lista']) ?></p>
+                        <div class="card-body ">
+                            <h5 class="card-title d-flex justify-content-center" ><?php echo ($producto['nombre']) ?></h5>
+                            <p class="card-text d-flex justify-content-center ">Precio: $<?php echo ($producto['precio_lista']) ?></p>
                             <form action="../Controlador/controladorCrud.php" method="post">
                               
                             
@@ -20,7 +20,7 @@ $resultado = mostrarDatos($conexion,$id_usuario);
                             
 
 
-                            <button name="agregar_producto" class="btn btn-primary w-50  container d-flex justify-content-center ">Agregar</button>
+                            <button name="agregar_producto" class="btn btn-primary w-50 container d-flex justify-content-center" onclick="return alert('Su producto ha sido agregado con éxito')">Agregar <i class="bi bi-cart-plus-fill ms-2"></i></button>
 
                             </form>
                         </div>

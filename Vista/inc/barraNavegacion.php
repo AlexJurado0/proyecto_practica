@@ -1,22 +1,32 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!-- Clase "navbar": Define que es una barra de navegación 
+"navbar-expand-lg": Permite que la barra se expanda en pantallas grandes -->
+<nav class="navbar navbar-expand-lg navbar-expand-sm">
+  <!-- Clase "container-fluid": Hace que la barra ocupe todo el ancho disponible -->
   <div class="container-fluid">
-    <a class="navbar-brand" href="paginaPrincipal.php">Inicio</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <!-- Clase "navbar-brand": Estiliza el enlace como un logo o título de la barra -->
+    <div class="collapse navbar-collapse" >
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="productos.php">Productos</a>
+        <li>
+          <a class="nav-link" href="paginaPrincipal.php">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="proveedores.php">Proveedores</a>
+          <a class="nav-link"  href="productos.php">Productos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ventas.php">Ventas</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link" href="ayuda.php">Ayuda</a>
+        </li>
       </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="./carrito.php" class="btn btn-success">
+          Ver carrito <i class="bi bi-cart3"></i>
+          </a>
+        </li>
+      </ul>
+      
     </div>
   </div>
 </nav>

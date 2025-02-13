@@ -22,7 +22,7 @@ if (isset($_POST['modificar'])) {
     $nombre = $_POST["nombre"];
     $precio = $_POST["precio_lista"];
 
-    modificarDatos($conexion, $codigo, $nombre, $precio);
+    modificarDatos($conexion,$id_usuario, $codigo, $nombre, $precio);
     header("Location: ../Vista/productos.php"); 
 
 }
@@ -31,32 +31,50 @@ if (isset($_POST['modificar'])) {
 if (isset($_GET["codigo_producto"])) {
     $codigo = $_GET["codigo_producto"];
 
-    eliminarDatos($conexion, $codigo);
+    eliminarDatos($conexion, $codigo, $id_usuario);
     header("Location: ../Vista/productos.php");
 }
 
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
-// eliminar venta
+// eliminar venta 
 if (isset($_POST["eliminar"])) {
-    $codigo = $_POST["id_ventas"];  
+    $codigo = $_POST["codigo_producto"];  
     $cantidad = $_POST["cantidad"]; 
 
-    eliminarVenta($conexion, $codigo, $cantidad);
+    eliminarVenta($conexion,$id_usuario, $codigo, $cantidad);
 
     header("Location: ../Vista/ventas.php");
 }
 
-//guardar venta
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+//agregar producto al carrito
 if (isset($_POST['tarjeta'])){
     $codigo =  $_POST["codigo_producto"];
     $producto = $_POST["nombre"];
     $precio = $_POST["precio_lista"];
 
-    
 
-    guardarVenta($conexion, $codigo, $producto, $precio, $id_usuario);
-    header("location: ../Vista/ventas.php");
+    agregarProducto($conexion, $codigo, $producto, $precio, $id_usuario);
+    header("location: ../Vista/paginaPrincipal.php");
 }
 
+// eliminar producto del carrito
+if (isset($_POST['eliminarCompra'])) {
+    $codigo = $_POST["codigo_producto"];  
+    $cantidad = $_POST["cantidad"]; 
 
+    eliminarCarrito($conexion, $codigo, $cantidad, $id_usuario);
+
+    header("Location: ../Vista/carrito.php");
+}
+
+// realizar compra carrito
+if (isset($_POST['realizarCompra'])) {
+
+    guardarCompra($conexion,$id_usuario);
+    realizarCompra($conexion, $id_usuario);
+    header("Location: ../Vista/carrito.php");
+}
 ?>

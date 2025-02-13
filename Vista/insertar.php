@@ -14,19 +14,19 @@
             <!-- Código Producto -->
             <div class="mb-3">
                 <label for="codigo_producto" class="form-label">Código Producto</label>
-                <input type="number" name="codigo_producto" id="codigo_producto" class="form-control" required>
+                <input type="number" name="codigo_producto" id="codigo_producto" class="form-control" autocomplete="off" required>
             </div>
             
             <!-- Nombre del Producto -->
             <div class="mb-3">
-                <label for="nombre" class="form-label">Producto</label>
-                <input type="text" name="nombre" id="nombre" class="form-control"  required>
+                <label for="nombre" class="form-label" >Producto</label>
+                <input type="text" name="nombre" id="nombre" class="form-control" autocomplete="off" required>
             </div>
     
             <!-- Precio Lista -->
             <div class="mb-3">
                 <label for="precio_lista" class="form-label">Precio Lista</label>
-                <input type="number" name="precio_lista" id="precio_lista" class="form-control" step="0.01" required>
+                <input type="number" name="precio_lista" id="precio_lista" class="form-control"  autocomplete="off" required>
             </div>
 
             <!-- campo oculto -->
