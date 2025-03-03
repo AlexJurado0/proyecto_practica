@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +12,19 @@
     <div class="container d-flex justify-content-center align-items-center" style="height: 700px;">
         
         <form method="post" action="../Controlador/controladorCrearUsuario.php" style="width: 400px;">
-            
-            
             <h4 class="text-center mb-4">Datos de Login</h4>
+
+            <!-- Mostrar alerta si hay error en la sesión -->
+            <?php
+            if (isset($_SESSION['error'])) {
+                // Mostrar alerta con el mensaje de error
+                echo "<script>alert('" . $_SESSION['error'] . "');</script>";
+                unset($_SESSION['error']); // Limpiar el mensaje después de mostrarlo
+            }
+            ?>
+
             <div class="mb-4 row">
-                <label for="nombre" class="col-5 col-form-label"></i> Usuario</label>
+                <label for="nombre" class="col-5 col-form-label">Usuario</label>
                 <div class="col-7">
                     <input type="text" class="form-control" name="nombre" placeholder="Ingresa tu nombre de usuario" autocomplete="off" required>
                 </div>
@@ -23,8 +35,8 @@
                     <input type="password" class="form-control" name="contraseña" placeholder="Ingresa tu contraseña" autocomplete="off" required>
                 </div>
             </div>
-<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
+            <!-- Datos personales -->
             <h4 class="text-center mb-4">Datos Personales</h4>
             <div class="mb-4 row">
                 <label for="nombre_completo" class="col-5 col-form-label">Nombre Completo</label>
@@ -62,6 +74,7 @@
                 <button type="submit" class="btn btn-primary col-12">Registrar</button>
             </div>
 
+            <!-- Campo oculto para indicar que es un registro -->
             <input type="hidden" name="crearUsuario">
         </form>
     </div>

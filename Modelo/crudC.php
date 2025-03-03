@@ -72,49 +72,62 @@ include 'seguridad.php';
     
 
     // Guardar Compra Carrito
-   function guardarCompra($conexion, $id_usuario) {
+    function guardarCompra($conexion, $id_usuario) {
 
-    $queryUltimaVenta = "SELECT MAX(numero_venta) AS ultimo_numero FROM ventas1 WHERE id_administrador = 1";
-    $resultadoUltimaVenta = mysqli_query($conexion, $queryUltimaVenta);
+        $queryUltimaVenta = "SELECT MAX(numero_venta) AS ultimo_numero FROM ventas1 WHERE id_administrador = 1";
+        $resultadoUltimaVenta = mysqli_query($conexion, $queryUltimaVenta);
+        if (!$resultadoUltimaVenta) {
+            echo "Error al obtener la última venta: " . mysqli_error($conexion);
+            return;
+        }
         $rowUltimaVenta = mysqli_fetch_assoc($resultadoUltimaVenta);
-
-    // Asignar el número de venta, si existe, incrementar en 1; si no, comenzar desde 1
-    if ($rowUltimaVenta['ultimo_numero']) {
-        $numero_venta = $rowUltimaVenta['ultimo_numero'] + 1;
-    } else {
-        $numero_venta = 1;
+    
+        // Asignar el número de venta, si existe, incrementar en 1; si no, comenzar desde 1
+        if ($rowUltimaVenta['ultimo_numero']) {
+            $numero_venta = $rowUltimaVenta['ultimo_numero'] + 1;
+        } else {
+            $numero_venta = 1;
+        }
+    
+        // Obtener los productos del carrito del usuario
+        $query = "SELECT c.codigo_producto, c.cantidad, c.nombre_producto, c.precio_lista, a.id_administrador 
+                  FROM carrito c
+                  INNER JOIN cliente cl ON c.id_usuario = cl.id_usuario
+                  INNER JOIN administrador a ON cl.id_administrador = a.id_administrador
+                  WHERE c.id_usuario = $id_usuario";
+                  
+        $resultadoCarrito = mysqli_query($conexion, $query);
+        if (!$resultadoCarrito) {
+            echo "Error al obtener el carrito: " . mysqli_error($conexion);
+            return;
+        }
+    
+        if (mysqli_num_rows($resultadoCarrito) > 0) {
+            while ($row = mysqli_fetch_assoc($resultadoCarrito)) {
+                $codigo_producto = $row['codigo_producto'];
+                $cantidad = $row['cantidad'];
+                $nombre_producto = $row['nombre_producto'];
+                $precio_lista = $row['precio_lista'];
+                $total = $cantidad * $precio_lista;
+    
+                // Generar número de venta (puede ser un ID único o basado en timestamp)
+                $queryInsert = "INSERT INTO ventas1 (numero_venta, cantidad, producto, precio_lista, total, codigo_producto, id_usuario, id_administrador) 
+                                VALUES ($numero_venta, $cantidad, '$nombre_producto', $precio_lista, $total, $codigo_producto, $id_usuario, 1)";
+                if (!mysqli_query($conexion, $queryInsert)) {
+                    echo "Error al insertar en la tabla ventas1: " . mysqli_error($conexion);
+                }
+            }
+        } else {
+            echo "No hay productos en el carrito.";
+        }
     }
-
-
-    // Obtener los productos del carrito del usuario
-    $query = "SELECT c.codigo_producto, c.cantidad, c.nombre_producto, c.precio_lista, a.id_administrador 
-              FROM carrito c
-              INNER JOIN cliente cl ON c.id_usuario = cl.id_usuario
-              INNER JOIN administrador a ON cl.id_administrador = a.id_administrador
-              WHERE c.id_usuario = $id_usuario";
-              
-    $resultadoCarrito = mysqli_query($conexion, $query);
-
-    while ($row = mysqli_fetch_assoc($resultadoCarrito)) {
-        $codigo_producto = $row['codigo_producto'];
-        $cantidad = $row['cantidad'];
-        $nombre_producto = $row['nombre_producto'];
-        $precio_lista = $row['precio_lista'];
-        $id_administrador = $row['id_administrador']; 
-        $total = $cantidad * $precio_lista;
-
-        // Generar número de venta (puede ser un ID único o basado en timestamp)
-         
-
-        // Insertar en ventas1 asignando siempre id_usuario = 1 (dueño del sistema)
-        $queryInsert = "INSERT INTO ventas1 (numero_venta, cantidad, producto, precio_lista, total, codigo_producto, id_usuario, id_administrador) 
-                        VALUES ($numero_venta, $cantidad, '$nombre_producto', $precio_lista, $total, $codigo_producto, $id_usuario, $id_administrador)";
-        mysqli_query($conexion, $queryInsert);
-    }
-}
-    // realizar compra del carrito
+    
+    // Realizar compra del carrito
     function realizarCompra($conexion, $id_usuario) {
-        mysqli_query($conexion, "DELETE FROM carrito WHERE id_usuario = $id_usuario");
+        $queryDelete = "DELETE FROM carrito WHERE id_usuario = $id_usuario";
+        if (!mysqli_query($conexion, $queryDelete)) {
+            echo "Error al eliminar el carrito: " . mysqli_error($conexion);
+        }
     }
     
 ?>

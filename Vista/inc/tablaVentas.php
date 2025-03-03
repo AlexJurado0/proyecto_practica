@@ -44,7 +44,7 @@ $totalVenta = 0; // Variable para almacenar el total de la venta
                     <td><?php echo $row["cantidad"]; ?></td>
                     <td><?php echo $row["precio_lista"] . " $"; ?></td>
                     <td><?php echo $row["total"] . " $"; ?></td>
-                    <td><?php echo $row["id_usuario"]; ?></td>
+                    <td><?php echo $row["Id_usuario"]; ?></td>
                     <td>
                         <div class="d-flex justify-content-start align-items-center">
                             <form method="post" action="../Controlador/controladorCrud.php" class="d-flex justify-content-start align-items-center ms-1">
