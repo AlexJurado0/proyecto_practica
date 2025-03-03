@@ -7,7 +7,7 @@
 </head>
 <body>
     
-<?php include_once './inc/barraNavegacion.php';?>
+<?php include_once './inc/barraNavegacionA.php';?>
 
 <h1 class="text-center mt-4">Productos</h1>
 

@@ -1,6 +1,7 @@
 <?php
 session_start();
-include './inc/head.php';
+
+include '../Modelo/seguridad.php';
 
 // Verifica si se recibió el código del producto
 if (isset($_GET['codigo_producto'])) {
@@ -11,6 +12,8 @@ if (isset($_GET['codigo_producto'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php include './inc/head.php';?>
+
     <title>Modificar</title>
 </head>
 <body>

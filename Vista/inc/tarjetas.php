@@ -1,5 +1,5 @@
 <?php 
-$resultado = mostrarDatos($conexion,$id_usuario);
+$resultado = mostrarDatos1($conexion,$id_usuario);
 ?>
 <br>
 <div class="container py-3">

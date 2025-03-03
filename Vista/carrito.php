@@ -8,7 +8,7 @@ include '../Controlador/controladorCrud.php';
     <title>Carrito</title>
 </head>
 <body>
-    <?php include './inc/barraNavegacion.php';?>
+    <?php include './inc/barraNavegacionC.php';?>
     <?php include './inc/carrito.php' ?>
 
 

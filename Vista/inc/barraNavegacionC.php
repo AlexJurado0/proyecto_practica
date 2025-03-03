@@ -10,13 +10,7 @@
           <a class="nav-link" href="paginaPrincipal.php">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  href="productos.php">Productos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="ventas.php">Ventas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="ayuda.php">Ayuda</a>
+          <a class="nav-link" href="../Modelo/destruirSesion.php">Salir</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
@@ -26,7 +20,7 @@
           </a>
         </li>
       </ul>
-      
+        
     </div>
   </div>
 </nav>

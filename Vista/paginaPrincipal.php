@@ -9,10 +9,10 @@ include '../Controlador/controladorCrud.php';
 </head>
 <body>
 
-<?php include_once './inc/barraNavegacion.php';?>
+<?php include_once './inc/barraNavegacionC.php';?>
 
 
-<h1 class="text-center mt-4">Inicio</h1>
+<h1 class="text-center mt-4">Ferreteria El Tornillo</h1>
 
 <!-- tarjetas -->
 <?php include_once './inc/tarjetas.php'; ?>

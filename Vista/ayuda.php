@@ -9,7 +9,7 @@ include '../Controlador/controladorCrud.php';
 
 </head>
 <body>
-    <?php include './inc/barraNavegacion.php';?>
+    <?php include './inc/barraNavegacionA.php';?>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">

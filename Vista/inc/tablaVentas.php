@@ -1,22 +1,33 @@
 <?php
 
-$resultadoVentas = mostrarVentas($conexion, $id_usuario);  ?>
+$resultadoVentas = mostrarVentas($conexion, $id_usuario); 
+$numeroVentaAnterior = null;
+?>
+
+
 
 <div class="container mt-5 ">
     <table class="table  table-bordered table-hover">
         <thead class="thead-dark">
             <tr>
+                <th class="col-1">N° Venta</th>
                 <th class="col-1">Código</th>
                 <th class="col-3">Producto</th>
-                <th class="col-2">Cantidad vendida</th>
+                <th class="col-1">Cantidad</th>
                 <th class="col-1">Precio Lista</th> 
                 <th class="col-1">total</th> 
                 <th class="col-2">Acciones</th>
             </tr>
         </thead>
         <tbody>
+            
+
+
             <?php while ($row = mysqli_fetch_assoc($resultadoVentas)) { ?>
+
+                
                 <tr>
+                    <td><?php echo $row["numero_venta"]; ?></td>
                     <td><?php echo $row["codigo_producto"]; ?></td>
                     <td><?php echo $row["producto"]; ?></td>
                     <td><?php echo $row["cantidad"]; ?></td>
@@ -27,12 +38,17 @@ $resultadoVentas = mostrarVentas($conexion, $id_usuario);  ?>
                             
                             <form method="post" action="../Controlador/controladorCrud.php" class="d-flex justify-content-start align-items-center ms-1">
                                 <input type="hidden" name="codigo_producto" value="<?php echo $row['codigo_producto']; ?>">
+                                <input type="hidden" name="numero_venta" value="<?php echo $row['numero_venta']; ?>">
                                 <input type="number" name="cantidad" class="form-control form-control-sm me-3" style="width: 90px;" placeholder="Cantidad" required>
                                 <button type="submit" name="eliminar" class="btn btn-danger btn-sm">eliminar  <i class="bi bi-trash3-fill"></i></button>
                             </form>
                         </div>
                     </td>
                 </tr>
+                <?php
+                // Actualiza el número de venta anterior
+                $numeroVentaAnterior = $row["numero_venta"];
+                ?>
             <?php } ?>
         </tbody>
     </table>

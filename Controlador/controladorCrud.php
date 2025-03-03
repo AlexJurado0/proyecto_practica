@@ -1,6 +1,7 @@
 <?php
 
-include '../Modelo/crud.php';
+include '../Modelo/crudC.php';
+include '../Modelo/crudA.php';
 
 $id_usuario = $_SESSION['id_usuario']; 
 
@@ -39,13 +40,17 @@ if (isset($_GET["codigo_producto"])) {
 
 // eliminar venta 
 if (isset($_POST["eliminar"])) {
+    $numero_venta = $_POST["numero_venta"];
     $codigo = $_POST["codigo_producto"];  
     $cantidad = $_POST["cantidad"]; 
 
-    eliminarVenta($conexion,$id_usuario, $codigo, $cantidad);
+    eliminarVenta($conexion, $numero_venta, $codigo, $cantidad);
 
     header("Location: ../Vista/ventas.php");
+    exit();
 }
+
+
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
