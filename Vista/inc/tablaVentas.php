@@ -1,5 +1,5 @@
 <?php
-$resultadoVentas = mostrarVentas($conexion, $id_usuario);
+$resultadoVentas = mostrarVentas($conexion);
 
 // Inicializa una variable para guardar el número de venta anterior
 $numeroVentaAnterior = null;

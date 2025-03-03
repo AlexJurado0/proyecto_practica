@@ -12,15 +12,15 @@ include 'seguridad.php';
     
     // Insertar producto
     function insertarDatos($conexion, $id_usuario, $codigo, $nombre, $precio_lista,) {
-        $id_administrador = $_SESSION['id_administrador'];
     
         // Verificar si el producto ya existe para ese usuario
         $query = "SELECT codigo_producto FROM productos WHERE codigo_producto = '$codigo' && id_usuario = '$id_usuario'";
         $resultado = mysqli_query($conexion, $query);
     
+        // !!!!!!! id_administrador cambiar al crear nuevo administrador !!!!!!!
         if (mysqli_num_rows($resultado) == 0) {
-            $insertQuery = "INSERT INTO productos (codigo_producto, nombre, precio_lista, id_usuario, id_administrador)
-                            VALUES ('$codigo', '$nombre', '$precio_lista', '$id_usuario', '$id_administrador')";
+            $insertQuery = "INSERT INTO productos (codigo_producto, nombre, precio_lista, id_usuario, id_administrador
+                            VALUES ('$codigo', '$nombre', '$precio_lista', '$id_usuario', 1)";
             mysqli_query($conexion, $insertQuery);
         }
     }
@@ -44,20 +44,20 @@ include 'seguridad.php';
     
     // Eliminar venta
     function eliminarVenta($conexion, $numero_venta, $codigo, $cantidad) {
-
-        $id_administrador = $_SESSION['id_administrador'];
-    
         $query = mysqli_query($conexion, "SELECT cantidad FROM ventas1 WHERE numero_venta = '$numero_venta' 
-        && codigo_producto = '$codigo' && id_administrador = '$id_administrador'");
+        && codigo_producto = '$codigo' && id_administrador = 1");
         $consulta = mysqli_fetch_assoc($query)['cantidad'];
     
         if ($cantidad > 0) {
             if ($consulta > $cantidad) {
+                // !!!!!!! id_administrador cambiar al crear nuevo administrador !!!!!!!
                 $query = "UPDATE ventas1 SET cantidad = cantidad - $cantidad, total = total - precio_lista * $cantidad 
-                WHERE numero_venta = '$numero_venta' && codigo_producto = '$codigo' && id_administrador = '$id_administrador'";
+                WHERE numero_venta = '$numero_venta' && codigo_producto = '$codigo' && id_administrador = 1";
             } else {
+
+                // !!!!!!! id_administrador cambiar al crear nuevo administrador !!!!!!!
                 $query = "DELETE FROM ventas1 WHERE numero_venta = '$numero_venta' && codigo_producto = '$codigo' 
-                && id_administrador = '$id_administrador'";
+                && id_administrador = 1";
             }
         } 
         
@@ -66,8 +66,9 @@ include 'seguridad.php';
     
 
     // Mostrar ventas
-    function mostrarVentas($conexion, $id_administrador) {
-        $query = "SELECT * FROM ventas1 where id_administrador = '$id_administrador';" ;
+    function mostrarVentas($conexion) {
+        // !!!!!!! id_administrador cambiar al crear nuevo administrador !!!!!!!
+        $query = "SELECT * FROM ventas1 where id_administrador = 1;" ;
         $resultadoVentas = mysqli_query($conexion, $query);
         return $resultadoVentas;
     }

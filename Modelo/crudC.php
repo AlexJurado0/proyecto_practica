@@ -6,6 +6,9 @@ include 'seguridad.php';
     // Mostrar productos 
 
     function mostrarDatos1($conexion, $id_usuario) {
+
+        
+        // !!!!!!! id_administrador cambiar al crear nuevo administrador !!!!!!!
         $query = "SELECT * FROM productos where id_administrador = 1";
         
         $resultado = mysqli_query($conexion, $query);
@@ -74,6 +77,8 @@ include 'seguridad.php';
     // Guardar Compra Carrito
     function guardarCompra($conexion, $id_usuario) {
 
+        // !!!!!!! id_administrador cambiar al crear nuevo administrador !!!!!!!
+        
         $queryUltimaVenta = "SELECT MAX(numero_venta) AS ultimo_numero FROM ventas1 WHERE id_administrador = 1";
         $resultadoUltimaVenta = mysqli_query($conexion, $queryUltimaVenta);
         if (!$resultadoUltimaVenta) {
@@ -110,7 +115,7 @@ include 'seguridad.php';
                 $precio_lista = $row['precio_lista'];
                 $total = $cantidad * $precio_lista;
     
-                // Generar número de venta (puede ser un ID único o basado en timestamp)
+                // !!!!!!! id_administrador cambiar al crear nuevo administrador !!!!!!!
                 $queryInsert = "INSERT INTO ventas1 (numero_venta, cantidad, producto, precio_lista, total, codigo_producto, id_usuario, id_administrador) 
                                 VALUES ($numero_venta, $cantidad, '$nombre_producto', $precio_lista, $total, $codigo_producto, $id_usuario, 1)";
                 if (!mysqli_query($conexion, $queryInsert)) {

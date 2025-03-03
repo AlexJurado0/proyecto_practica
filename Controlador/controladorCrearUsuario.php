@@ -13,6 +13,15 @@ if (isset($_POST['crearUsuario'])) {
     $domicilio = $_POST["domicilio"];  
     $correo = $_POST["correo"];  
 
+    // Validación del teléfono (10 o 11 dígitos)
+    $regex_telefono = '/^[0-9]{10,11}$/'; // La expresión regular
+    if (!preg_match($regex_telefono, $telefono)) {
+        // Si el teléfono no es válido, redirigimos con un mensaje de error
+        $_SESSION['error1'] = "El teléfono debe ser un número de entre 10 y 11 dígitos.";
+        header("Location: ../Vista/crearUsuario.php");
+        exit();
+    }
+
     // Verificar si el nombre de usuario ya está registrado
     $queryVerificar = "SELECT * FROM login WHERE usuario = '$usuario'";
     $resultadoVerificar = mysqli_query($conexion, $queryVerificar);

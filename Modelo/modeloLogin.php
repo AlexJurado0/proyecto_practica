@@ -2,6 +2,7 @@
 session_start(); 
 include 'conexion.php';
 
+
 function verificarLogin($conexion, $usuario) {
     $query = "SELECT id_usuario, rol, contraseña FROM login WHERE usuario = '$usuario'";
     $resultado = mysqli_query($conexion, $query);

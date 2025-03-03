@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +23,14 @@ session_start();
                 echo "<script>alert('" . $_SESSION['error'] . "');</script>";
                 unset($_SESSION['error']); // Limpiar el mensaje después de mostrarlo
             }
+
+            
+            if (isset($_SESSION['error1'])) {
+                // Mostrar alerta con el mensaje de error
+                echo "<script>alert('" . $_SESSION['error1'] . "');</script>";
+                unset($_SESSION['error1']); // Limpiar el mensaje después de mostrarlo
+            }
+
             ?>
 
             <div class="mb-4 row">
