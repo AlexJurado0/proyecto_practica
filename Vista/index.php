@@ -32,7 +32,9 @@
             </div>
             <div>
                 <button type="submit" class="btn btn-primary col-12">Ingresar</button>
+                <p class="mt-2">¿No tienes una cuenta? <a href="./crearUsuario.php">Crea una</a></p>
             </div>
+
         </form>
     </div>
 
